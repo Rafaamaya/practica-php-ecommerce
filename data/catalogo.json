@@ -1,0 +1,82 @@
+[
+    {
+        "id": 1,
+        "imagen": "tortuga-ninja.jpg",
+        "alt": "Figura de colecci\u00f3n de la Tortuga Ninja Raphael",
+        "nombre": "Raphael",
+        "etiqueta": null,
+        "tipo_etiqueta": null,
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> Edici\u00f3n limitada<\/em> coleccionista de 18 cm de alto.",
+        "precio": "$574.977"
+    },
+    {
+        "id": 2,
+        "imagen": "robocop.jpg",
+        "alt": "Figura de colecci\u00f3n de RoboCop",
+        "nombre": "RoboCop",
+        "etiqueta": "Nuevo",
+        "tipo_etiqueta": "success",
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> R\u00e9plica detallada del polic\u00eda cibern\u00e9tico de Detroit<\/em>, 20 cm de alto.",
+        "precio": "$735.977"
+    },
+    {
+        "id": 3,
+        "imagen": "espadachin-azul.jpg",
+        "alt": "Figura de colecci\u00f3n de un espadach\u00edn de cabello azul",
+        "nombre": "Espadach\u00edn Sombr\u00edo",
+        "etiqueta": "Oferta",
+        "tipo_etiqueta": "danger",
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> Guerrero de abrigo negro y katana<\/em>, 19 cm de alto.",
+        "precio": "$528.977"
+    },
+    {
+        "id": 4,
+        "imagen": "mazinger.jpg",
+        "alt": "Figura de colecci\u00f3n de Mazinger Z",
+        "nombre": "Mazinger Z",
+        "etiqueta": "nuevo",
+        "tipo_etiqueta": "success",
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> El cl\u00e1sico robot rojo y negro<\/em> del anime, 21 cm de alto.",
+        "precio": "$804.977"
+    },
+    {
+        "id": 5,
+        "imagen": "he-man.jpg",
+        "alt": "Figura de colecci\u00f3n de He-Man",
+        "nombre": "He-Man",
+        "etiqueta": "Oferta",
+        "tipo_etiqueta": "danger",
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> El h\u00e9roe de Eternia<\/em> con su espada de poder, 20 cm de alto.",
+        "precio": "$367.977"
+    },
+    {
+        "id": 6,
+        "imagen": "maestro-artes-marciales.jpg",
+        "alt": "Figura de colecci\u00f3n de un maestro de artes marciales",
+        "nombre": "Maestro Roshi",
+        "etiqueta": "Nuevo",
+        "tipo_etiqueta": "success",
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> El sabio maestro de artes marciales<\/em> con su bast\u00f3n, 17 cm de alto.",
+        "precio": "$459.977"
+    },
+    {
+        "id": 7,
+        "imagen": "depredador.jpg",
+        "alt": "Figura de colecci\u00f3n del Depredador",
+        "nombre": "Depredador",
+        "etiqueta": "Nuevo",
+        "tipo_etiqueta": "success",
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> El cazador alien\u00edgena<\/em> con armadura y armas, 22 cm de alto.",
+        "precio": "$850.977"
+    },
+    {
+        "id": 8,
+        "imagen": "mago.jpg",
+        "alt": "Figura de colecci\u00f3n de Orco",
+        "nombre": "Orco",
+        "etiqueta": null,
+        "tipo_etiqueta": null,
+        "descripcion": "Figura impresa en 3D y pintada a mano.<\/strong> Peque\u00f1o hechicero<\/em> de sombrero rojo y b\u00e1culo m\u00e1gico, 15 cm de alto.",
+        "precio": "$413.977"
+    }
+]

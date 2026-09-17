@@ -1,0 +1,298 @@
+[
+  {
+    "id": 1,
+    "nombre": "Raphael",
+    "precio": "$574.977",
+    "altura": "18 cm",
+    "acabado": "Pintura acrílica verde y roja pintada a mano",
+    "base_incluida": true,
+    "edicion": "Edición limitada",
+    "imagenes": [
+      {
+        "ruta": "img/productos/tortuga-ninja.jpg",
+        "alt": "Figura de colección de Raphael"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-1.jpg",
+        "alt": "Detalle de la figura de Raphael"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-2.jpg",
+        "alt": "Figura de Raphael vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Pagá con tarjeta de crédito o débito mediante una plataforma segura."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Podés abonar en hasta 3 cuotas sin interés según la entidad bancaria."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "Envío protegido a todo el país o retiro en un punto acordado."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nombre": "RoboCop",
+    "precio": "$735.977",
+    "altura": "24 cm",
+    "acabado": "Pintura acrílica pintada a mano",
+    "base_incluida": true,
+    "edicion": "Edición limitada",
+    "imagenes": [
+      {
+        "ruta": "img/productos/robocop.jpg",
+        "alt": "Figura de colección de RoboCop"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-1.jpg",
+        "alt": "Detalle de la figura de RoboCop"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-2.jpg",
+        "alt": "Figura de RoboCop vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Aceptamos tarjetas de crédito y débito con pago seguro."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Hasta 3 cuotas sin interés según el banco."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "Envío nacional con seguimiento o retiro en un punto acordado."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nombre": "Espadachín Sombrío",
+    "precio": "$528.977",
+    "altura": "19 cm",
+    "acabado": "Pintura acrílica con detalles metalizados",
+    "base_incluida": false,
+    "edicion": "Edición especial",
+    "imagenes": [
+      {
+        "ruta": "img/productos/espadachin-azul.jpg",
+        "alt": "Figura de colección del Espadachín Sombrío"
+      },
+      {
+        "ruta": "img/detalle/espadachin-azul-detalle-1.jpeg",
+        "alt": "Detalle de la figura del Espadachín Sombrío"
+      },
+      {
+        "ruta": "img/detalle/espadachin-azul-detalle-2.jpeg",
+        "alt": "Figura del Espadachín Sombrío vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Comprá de forma segura con tarjetas de crédito o débito."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Disponible en hasta 3 cuotas sin interés."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "El producto se entrega embalado y protegido para evitar daños."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nombre": "Mazinger Z",
+    "precio": "$804.977",
+    "altura": "21 cm",
+    "acabado": "Pintura acrílica roja, negra y gris",
+    "base_incluida": true,
+    "edicion": "Edición clásica",
+    "imagenes": [
+      {
+        "ruta": "img/productos/mazinger.jpg",
+        "alt": "Figura de colección de Mazinger Z"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-1.jpg",
+        "alt": "Detalle de la figura de Mazinger Z"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-2.jpg",
+        "alt": "Figura de Mazinger Z vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Pago protegido mediante tarjetas de crédito y débito."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Hasta 3 cuotas sin interés según las condiciones del banco."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "Enviamos la figura con embalaje reforzado y número de seguimiento."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "nombre": "He-Man",
+    "precio": "$367.977",
+    "altura": "23 cm",
+    "acabado": "Pintura acrílica con acabado mate",
+    "base_incluida": false,
+    "edicion": "Edición de colección",
+    "imagenes": [
+      {
+        "ruta": "img/productos/he-man.jpg",
+        "alt": "Figura de colección de He-Man"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-1.jpg",
+        "alt": "Detalle de la figura de He-Man"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-2.jpg",
+        "alt": "Figura de He-Man vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Aceptamos tarjetas de crédito y débito de las principales entidades."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Podés financiar tu compra en hasta 3 cuotas sin interés."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "Retiro acordado o envío seguro a domicilio."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "nombre": "Maestro Roshi",
+    "precio": "$459.977",
+    "altura": "17 cm",
+    "acabado": "Pintura acrílica pintada a mano",
+    "base_incluida": true,
+    "edicion": "Edición artesanal",
+    "imagenes": [
+      {
+        "ruta": "img/productos/maestro-artes-marciales.jpg",
+        "alt": "Figura de colección del Maestro Roshi"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-1.jpg",
+        "alt": "Detalle de la figura del Maestro Roshi"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-2.jpg",
+        "alt": "Figura del Maestro Roshi vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Realizá tu pago de manera rápida y segura con tarjeta."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Ofrecemos hasta 3 cuotas sin interés en bancos seleccionados."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "La figura se envía cuidadosamente protegida para su conservación."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "nombre": "Depredador",
+    "precio": "$850.977",
+    "altura": "22 cm",
+    "acabado": "Pintura acrílica con detalles metalizados",
+    "base_incluida": true,
+    "edicion": "Edición premium",
+    "imagenes": [
+      {
+        "ruta": "img/productos/depredador.jpg",
+        "alt": "Figura de colección del Depredador"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-1.jpg",
+        "alt": "Detalle de la figura del Depredador"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-2.jpg",
+        "alt": "Figura del Depredador vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Pago seguro con tarjetas de crédito y débito."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Hasta 3 cuotas sin interés según el banco emisor."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "Envío nacional con seguimiento y embalaje especial."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "nombre": "Orco",
+    "precio": "$413.977",
+    "altura": "15 cm",
+    "acabado": "Pintura acrílica en tonos verdes y rojos",
+    "base_incluida": true,
+    "edicion": "Edición fantástica",
+    "imagenes": [
+      {
+        "ruta": "img/productos/mago.jpg",
+        "alt": "Figura de colección de un orco"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-1.jpg",
+        "alt": "Detalle de la figura del orco"
+      },
+      {
+        "ruta": "img/detalle/robocop-detalle-2.jpg",
+        "alt": "Figura del orco vista completa"
+      }
+    ],
+    "pagos": [
+      {
+        "titulo": "Pago único con tarjeta",
+        "descripcion": "Podés pagar con tarjeta de crédito o débito de forma segura."
+      },
+      {
+        "titulo": "Financiación en cuotas",
+        "descripcion": "Disponible en hasta 3 cuotas sin interés."
+      },
+      {
+        "titulo": "Envío y retiro",
+        "descripcion": "Envío protegido o retiro coordinado con el comprador."
+      }
+    ]
+  }
+]
