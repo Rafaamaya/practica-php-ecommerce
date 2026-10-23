@@ -43,12 +43,14 @@ switch ($etiqueta) {
                                 <h3>
                                     <?= $producto['nombre']; ?>
                                     <?php if (isset($producto['etiqueta'])): ?>
-                                        <span class="badge text-bg-<?= $producto['tipo_etiqueta']; ?> align-middle"><?= $producto['etiqueta']; ?></span>
+                                        <span class="badge text-bg-<?= $producto['tipo_etiqueta']; ?> align-middle">
+                                            <?= $producto['etiqueta']; ?>
+                                        </span>
                                     <?php endif; ?>
                                 </h3>
                                 <p><?= $producto['descripcion']; ?></p>
                                 <p><strong class="fs-4"><?= $producto['precio']; ?></strong></p>
-                                <a href=<?= $white_list['detalle']['url'] . "&id="  . $producto['id']?> class="btn btn-success">Comprar</a>
+                                <a href=<?= $white_list['detalle']['url'] . "&id="  . $producto['id'] ?> class="btn btn-success">Comprar</a>
                             </div>
                         </div>
                     </div>

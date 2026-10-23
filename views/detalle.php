@@ -1,6 +1,8 @@
 <?php
 
 require_once __DIR__ . "/../includes/funciones.php";
+require_once __DIR__ . "/../includes/whitelist.php";
+
 
 /* echo "<pre>";
 print_r($_GET);
@@ -27,15 +29,18 @@ echo "</pre>"; */
     <section class="row gy-4 align-items-start">
         <div class="col-lg-6">
             <div class="row g-3">
-                <div class="col-12">
-                    <img src=<?= $item["imagenes"][0]["ruta"] ?> class="img-fluid rounded shadow-sm" alt="Figura de RoboCop">
-                </div>
-                <div class="col-6">
-                    <img src=<?= $item["imagenes"][1]["ruta"] ?> class="img-fluid rounded shadow-sm" alt="Figura de RoboCop, vista frontal con arma">
-                </div>
-                <div class="col-6">
-                    <img src=<?= $item["imagenes"][2]["ruta"] ?> class="img-fluid rounded shadow-sm" alt="Figura de RoboCop, vista frontal completa">
-                </div>
+                <?php foreach ($item["imagenes"] as $key => $imagen): ?>
+                    <?php if ($key === 0): ?>
+                        <div class="col-12">
+                            <img src="img/productos/<?= $item["imagenes"][$key]["ruta"] ?>" class="img-fluid rounded shadow-sm" alt="<?= htmlspecialchars($item["imagenes"][0]["alt"], ENT_QUOTES, 'UTF-8') ?>">
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($key > 0): ?>
+                        <div class="col-6">
+                            <img src="img/detalle/<?= $item["imagenes"][$key]["ruta"] ?>" class="img-fluid rounded shadow-sm" alt="<?= htmlspecialchars($item["imagenes"][$key]["alt"], ENT_QUOTES, 'UTF-8') ?>">
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="col-lg-6">
@@ -53,14 +58,13 @@ echo "</pre>"; */
                     </ul>
 
                     <a href="#" class="btn btn-primary w-100 mb-2">Comprar ahora</a>
-                    <a href="index.php" class="btn btn-outline-secondary w-100">Seguir viendo productos</a>
+                    <a href=<?= $white_list['products']['url'] . "todo"  ?> class="btn btn-outline-secondary w-100">Seguir viendo productos</a>
                 </div>
             </div>
 
             <div class="mt-4">
                 <h3>Opciones de pago</h3>
                 <div class="accordion" id="accordionPagos">
-
                     <?php foreach ($item["pagos"] as $key =>  $value): ?>
                         <div class="accordion-item">
                             <div class="accordion-header" id="heading<?= $key ?>">
@@ -86,8 +90,7 @@ echo "</pre>"; */
             <div class="col-lg-8">
                 <article>
                     <h2>Descripción extendida</h2>
-                    <p>RoboCop es una figura de colección diseñada para exhibirse en estanterías y escritorios. Su <em>pose dinámica</em> y los detalles del casco, la armadura y el bláster lo hacen ideal para fans del cine ochentoso y la ciencia ficción.</p>
-                    <p>La base transparente incluye un soporte adicional para mayor estabilidad. Cada figura es pintada a mano, por lo que puede presentar ligeras variaciones que aumentan su <strong>carácter artesanal</strong>.</p>
+                    <P><?= $item["descripcion_extendida"] ?></P>
                 </article>
                 <article class="mt-4">
                     <h2>Cómo cuidarla</h2>
