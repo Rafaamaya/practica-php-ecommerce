@@ -1,0 +1,26 @@
+BASE DE DATOS - Tienda de Figuras de Colección
+==============================================
+
+Archivos
+--------
+tiendita_db.sql          Base de datos completa (estructura + datos).
+tiendita_db_DER.png      Diagrama de las tablas y sus relaciones (imagen).
+tiendita_db_DER.drawio   Mismo diagrama, editable en draw.io.
+
+Cómo importar en phpMyAdmin
+---------------------------
+1. Crear una base de datos nueva llamada: tiendita_db
+   (cotejamiento utf8mb4_general_ci).
+2. Seleccionar la base tiendita_db.
+3. Pestaña "Importar" > elegir tiendita_db.sql > "Importar".
+
+Tablas
+------
+productos          Tabla principal (15 productos).
+imagenes           Relación 1 a N con productos (3 imágenes por producto).
+etiquetas          Etiquetas (Nuevo, Oferta, etc.).
+producto_etiqueta  Tabla pívot N a M entre productos y etiquetas.
+formas_pago        Formas de pago.
+producto_pagos     Tabla pívot N a M entre productos y formas de pago.
+usuarios           Usuarios del sistema (contraseñas con password_hash).
+vistas             Secciones del sitio.
