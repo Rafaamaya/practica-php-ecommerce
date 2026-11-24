@@ -2,6 +2,17 @@
 
 require_once __DIR__ . "/../includes/whitelist.php";
 require_once __DIR__ . "/../includes/funciones.php";
+require_once __DIR__ . "/../classes/Producto.php";
+
+
+
+    $productos = Producto::getCatalogoCompleto();
+
+
+    echo "<pre>";
+    print_r($productos);
+    echo "</pre>";
+
 
 $etiqueta = $_GET['etiqueta'] ?? null;
 $catalogo_filtrado = null;
@@ -17,7 +28,7 @@ switch ($etiqueta) {
         $catalogo_filtrado = filtrar_etiqueta($etiqueta);
         break;
     case strtolower($etiqueta) == 'todo':
-        $catalogo_filtrado = get_productos("catalogo");
+        $catalogo_filtrado = $productos;
         $texto_titulo = "Nuestras figuras";
         break;
     default:
@@ -32,25 +43,25 @@ switch ($etiqueta) {
 
         <?php if (isset($catalogo_filtrado)): ?>
             <div class="row g-4">
-                <p class="text-center text-secondary mb-4 d-none d-lg-block"><em>Pasá el mouse</em> sobre cada figura paraver sus datos.</p>
+                <p class="text-center text-secondary mb-4 d-none d-lg-block"><em>Pasá el mouse</em> sobre cada figura para ver sus datos.</p>
 
                 <?php foreach ($catalogo_filtrado as $producto): ?>
                     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <div class="border rounded shadow-sm h-100 producto">
-                            <img src="img/productos/<?= $producto['imagen']; ?>" class="img-fluid"
-                                alt="<?= $producto['alt']; ?>">
+                            <img src="img/productos/<?= $producto->getImagen(); ?>" class="img-fluid"
+                                alt="<?= $producto->getAlt(); ?>">
                             <div class="producto-info text-center">
                                 <h3>
-                                    <?= $producto['nombre']; ?>
-                                    <?php if (isset($producto['etiqueta'])): ?>
-                                        <span class="badge text-bg-<?= $producto['tipo_etiqueta']; ?> align-middle">
-                                            <?= $producto['etiqueta']; ?>
+                                    <?= $producto->getNombre(); ?>
+                                    <?php if (null !== $producto->getEtiqueta()): ?>
+                                        <span class="badge text-bg-<?= $producto->getTipoEtiqueta(); ?> align-middle">
+                                            <?= $producto->getEtiqueta(); ?>
                                         </span>
                                     <?php endif; ?>
                                 </h3>
-                                <p><?= $producto['descripcion']; ?></p>
-                                <p><strong class="fs-4"><?= $producto['precio']; ?></strong></p>
-                                <a href=<?= $white_list['detalle']['url'] . "&id="  . $producto['id'] ?> class="btn btn-success">Comprar</a>
+                                <p><?= $producto->getDescripcion(); ?></p>
+                                <p><strong class="fs-4"><?= $producto->getPrecio(); ?></strong></p>
+                                <a href="<?= $white_list['detalle']['url'] . "&id="  . $producto->getId() ?>" class="btn btn-success">Detalles</a>
                             </div>
                         </div>
                     </div>
