@@ -22,11 +22,15 @@ $white_list = [
         "url" => "index.php?content=404"
     ],
     "products" => [
-        "titulo" => "Nuestros produectos",
+        "titulo" => "Nuestros productos",
         "url" => "index.php?content=products&etiqueta="
     ],
     "detalle" => [
-        "titulo" => "Detalle del prodeucto",
+        "titulo" => "Detalle del producto",
         "url" => "index.php?content=detalle"
+    ],
+    "gracias" => [
+        "titulo" => "Mensaje enviado",
+        "url" => "index.php?content=gracias"
     ]
 ];

@@ -4,24 +4,24 @@
                     <h2>Contacto</h2>
                     <p>Si querés conocer más sobre nuestros productos o pedir una <em>figura personalizada</em>,
                         escribinos y nos pondremos en <strong>contacto</strong> contigo.</p>
-                    <form method="get" action="#">
+                    <form action="index.php?content=gracias" method="post">
                         <div class="row g-3 mb-3">
                             <div class="col-sm-6">
                                 <label for="nombre" class="form-label">Nombre completo</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Tu nombre">
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre" required>
                             </div>
                             <div class="col-sm-6">
                                 <label for="telefono" class="form-label">Teléfono</label>
-                                <input type="tel" class="form-control" id="telefono" placeholder="+54 9 11 1234 5678">
+                                <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="+54 9 11 1234 5678">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
                         </div>
                         <div class="mb-3">
                             <label for="comentario" class="form-label">Comentario</label>
-                            <textarea class="form-control" id="comentario" rows="4" placeholder="Tu mensaje"></textarea>
+                            <textarea class="form-control" id="comentario" name="comentario" rows="4" placeholder="Tu mensaje" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar mensaje</button>
                     </form>
