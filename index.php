@@ -73,6 +73,9 @@ $etiquetas = Etiqueta::getTodas();
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $white_list['alumno']['url'] ?>">Alumno</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="admin/index.php">Panel</a>
+                        </li>
                     </ul>
                 </div>
             </div>

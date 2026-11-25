@@ -9,7 +9,13 @@ class Vista
     private int $activa;
     private int $restringida;
 
-    public static function validarVista(string $vista): Vista
+    /**
+     * Valida si la vista solicitada existe y está activa, y devuelve un objeto Vista con sus datos.
+     * @param string $vista Nombre de la vista solicitada
+     * @param string $carpeta Carpeta donde se encuentran los archivos de vistas (por defecto 'views')
+     * @return Vista Objeto Vista con los datos de la vista solicitada o una vista por defecto si no existe o no está activa
+     */
+    public static function validarVista(string $vista, string $carpeta = 'views'): Vista
     {
         $conexion = (new Conexion())->getConexion();
         $query = "SELECT * FROM vistas
@@ -19,20 +25,21 @@ class Vista
             $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
             $PDOStatement->execute(['nombre' => $vista]);
             $vistaObtenida = $PDOStatement->fetch();
+
         } catch (PDOException $e) {
             echo "<p>Se generó un error en el siguiente archivo: " . $e->getFile() . " en la línea " . $e->getLine() . "</p>";
             die("Error al validar la vista. Intenta más tarde.");
         }
         if ($vistaObtenida) {
             // La vista existe en la base pero falta su archivo: se trata como no encontrada
-            if (!file_exists(__DIR__ . "/../views/" . $vistaObtenida->getNombre() . ".php")) {
+            if (!file_exists(__DIR__ . "/../" . $carpeta . "/" . $vistaObtenida->getNombre() . ".php")) {
                 $vistaObtenida = new Vista();
                 $vistaObtenida->nombre = '404';
                 $vistaObtenida->titulo = 'Página no encontrada';
                 $resultado = $vistaObtenida;
             } elseif ($vistaObtenida->getActiva()) {
 
-                if(!$vistaObtenida->getRestringida()) {
+                if (!$vistaObtenida->getRestringida()) {
                     $resultado = $vistaObtenida;
                 } else {
                     // Si la vista está restringida, se puede devolver una vista de acceso denegado o lanzar una excepción
@@ -48,14 +55,12 @@ class Vista
                 $vistaObtenida->titulo = 'Servicio no disponible';
                 $resultado = $vistaObtenida;
             }
-    
         } else {
             // Si no se encuentra la vista, se puede devolver una vista por defecto o lanzar una excepción
             $vistaObtenida = new Vista();
             $vistaObtenida->nombre = '404';
             $vistaObtenida->titulo = 'Página no encontrada';
             $resultado = $vistaObtenida;
-
         }
         return $resultado;
     }
