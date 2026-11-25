@@ -1,5 +1,5 @@
         <section id="libre" class="my-5">
-            <h2 class="mb-4">Nuestro proceso de impresión</h2>
+            <h1 class="h2 mb-4">Nuestro proceso de impresión</h1>
             <div class="d-flex flex-column flex-md-row align-items-center">
                 <div class="flex-shrink-0 mb-4 mb-md-0 me-md-4 me-lg-5">
                     <img src="img/productos/mago.jpg" class="img-fluid rounded shadow-sm proceso-img"

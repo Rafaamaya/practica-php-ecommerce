@@ -15,7 +15,7 @@
                             <img src="img/carousel/banner-robocop.jpg" class="d-block w-100"
                                 alt="RoboCop edición especial">
                             <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 rounded p-3">
-                                <h5>Ediciones Limitadas</h5>
+                                <p class="h5"><strong>Ediciones Limitadas</strong></p>
                                 <p>Figuras únicas con <strong>acabados premium</strong> y bases incluidas.</p>
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                             <img src="img/carousel/banner-mazinger.jpg" class="d-block w-100"
                                 alt="Mazinger Z figura premium">
                             <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 rounded p-3">
-                                <h5>Colores originales</h5>
+                                <p class="h5"><strong>Colores originales</strong></p>
                                 <p><em>Modelos pintados a mano</em> con los tonos del personaje.</p>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                             <img src="img/carousel/banner-heman.jpg" class="d-block w-100"
                                 alt="He-Man figura de colección">
                             <div class="carousel-caption d-none d-md-block bg-black bg-opacity-50 rounded p-3">
-                                <h5>Regalos para fans</h5>
+                                <p class="h5"><strong>Regalos para fans</strong></p>
                                 <p>El <strong>complemento ideal</strong> para cualquier vitrina de colección.</p>
                             </div>
                         </div>

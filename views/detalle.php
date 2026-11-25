@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../includes/funciones.php";
 require_once __DIR__ . "/../includes/whitelist.php";
 require_once __DIR__ . "/../classes/Producto.php";
 

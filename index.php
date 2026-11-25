@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . "/includes/whitelist.php";
 require_once __DIR__ . "/classes/Etiqueta.php";
-/* require_once __DIR__ . "/data/product_list.php"; */
 
 $etiquetas = Etiqueta::getTodas();
 

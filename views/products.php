@@ -25,7 +25,7 @@ if ($etiquetaActual) {
 
 <div>
     <section id="productos" class="my-5">
-        <h2 class="text-center my-4"><?= $texto_titulo; ?></h2>
+        <h1 class="h2 text-center my-4"><?= $texto_titulo; ?></h1>
 
         <?php if (isset($catalogo_filtrado)): ?>
             <div class="row g-4">
@@ -37,14 +37,14 @@ if ($etiquetaActual) {
                             <img src="img/productos/<?= $producto->getImagenList()[0]->getRuta(); ?>" class="img-fluid"
                                 alt="<?= $producto->getImagenList()[0]->getAlt(); ?>">
                             <div class="producto-info text-center">
-                                <h3>
+                                <h2 class="h3">
                                     <?= $producto->getNombre(); ?>
                                     <?php foreach ($producto->getEtiquetaList() as $etiqueta): ?>
                                         <span class="badge text-bg-<?= $etiqueta->getTipo(); ?> align-middle">
                                             <?= $etiqueta->getNombre(); ?>
                                         </span>
                                     <?php endforeach; ?>
-                                </h3>
+                                </h2>
                                 <p><?= $producto->getDescripcion(); ?></p>
                                 <p><strong class="fs-4"><?= $producto->getPrecio(); ?></strong></p>
                                 <a href="<?= $white_list['detalle']['url'] . "&id="  . $producto->getId() ?>" class="btn btn-success">Detalles</a>

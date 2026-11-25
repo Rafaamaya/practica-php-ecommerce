@@ -13,10 +13,6 @@ $white_list = [
         "titulo" => "Nuestro proceso",
         "url" => "index.php?content=process"
     ],
-    "test" => [
-        "titulo" => "Test",
-        "url" => "index.php?content=test"
-    ],
     "404" => [
         "titulo" => "Página no encontrada",
         "url" => "index.php?content=404"

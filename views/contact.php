@@ -1,7 +1,7 @@
         <section id="contacto" class="mb-5">
             <div class="row gy-4">
                 <div class="col-lg-6">
-                    <h2>Contacto</h2>
+                    <h1 class="h2">Contacto</h1>
                     <p>Si querés conocer más sobre nuestros productos o pedir una <em>figura personalizada</em>,
                         escribinos y nos pondremos en <strong>contacto</strong> contigo.</p>
                     <form action="index.php?content=gracias" method="post">
@@ -29,7 +29,7 @@
                 <div class="col-lg-6">
                     <div class="card border-0 shadow-sm p-4 h-100">
                         <div class="card-body">
-                            <h3 class="h5">Atención al cliente</h3>
+                            <h2 class="h5">Atención al cliente</h2>
                             <p class="text-secondary">Nuestro equipo responde consultas <strong>de lunes a
                                 viernes</strong>. También podés pedir asesoramiento para elegir la figura ideal según
                                 tus gustos.</p>

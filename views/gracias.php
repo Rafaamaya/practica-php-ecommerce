@@ -2,7 +2,8 @@
 // Si se entra directo por la URL, sin enviar el formulario, no hay datos para mostrar
 // TODO: en lugar de este mensaje, mostrar la página 404 (views/404.php)
 if (empty($_POST)) {
-    echo '<p class="py-5">Primero tenés que <a href="index.php?content=contact">completar el formulario de contacto</a>.</p>';
+    echo '<section class="py-5"><h1 class="h2">No hay ningún mensaje</h1>';
+    echo '<p>Primero tenés que <a href="index.php?content=contact"><strong>completar el formulario de contacto</strong></a>.</p></section>';
     return;
 }
 
