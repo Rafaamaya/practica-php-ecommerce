@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . "/Conexion.php";
+require_once __DIR__ . "/Etiqueta.php";
 
 class Producto
 {
@@ -9,9 +10,8 @@ class Producto
     private string $nombre;
     private string $imagen;
     private string $alt;
-    private string $etiqueta = ""; // boorr proximamente
-    private string $tipoEtiqueta = ""; // boorr proximamente
     private string $descripcion;
+    private array $etiquetaList = [];
     private string $precio;
     private float $altura_cm;
     private int $base_incluida;
@@ -23,20 +23,61 @@ class Producto
     public static function getCatalogoCompleto(): array
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT p.*, i.ruta AS imagen, i.alt
-          FROM productos p
-          LEFT JOIN imagenes i ON i.producto_id = p.id AND i.orden = 1
-          ORDER BY p.id";
+        $query = "SELECT productos.*, imagenes.ruta AS imagen, imagenes.alt
+          FROM productos
+          LEFT JOIN imagenes ON imagenes.producto_id = productos.id AND imagenes.orden = 1
+          ORDER BY productos.id";
         try {
             $PDOStatement = $conexion->prepare($query);
             $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
             $PDOStatement->execute();
             $productos = $PDOStatement->fetchAll();
+            $productos = self::cargarEtiquetas($productos);
             return $productos;
         } catch (Throwable $th) {
             echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
             die("Error al ejecutar la consulta en la BD estamos trabajando para solucionarlo. Intenta más tarde.");
         }
+    }
+
+    /**
+     * Devuelve los productos que tienen una etiqueta determinada.
+     * @param int $etiquetaId ID de la etiqueta
+     * @return Producto[]
+     */
+    public static function getPorEtiqueta(int $etiquetaId): array
+    {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT productos.*, imagenes.ruta AS imagen, imagenes.alt
+                  FROM productos
+                  INNER JOIN producto_etiqueta ON producto_etiqueta.producto_id = productos.id
+                  LEFT JOIN imagenes ON imagenes.producto_id = productos.id AND imagenes.orden = 1
+                  WHERE producto_etiqueta.etiqueta_id = :etiqueta_id
+                  ORDER BY productos.id";
+        try {
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+            $PDOStatement->execute(['etiqueta_id' => $etiquetaId]);
+            $productos = $PDOStatement->fetchAll();
+            $productos = self::cargarEtiquetas($productos);
+            return $productos;
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al filtrar los productos. Intenta más tarde.");
+        }
+    }
+
+    /**
+     * Le carga a cada producto su lista de etiquetas.
+     * @param Producto[] $productos
+     * @return Producto[]
+     */
+    private static function cargarEtiquetas(array $productos): array
+    {
+        foreach ($productos as $producto) {
+            $producto->etiquetaList = Etiqueta::getPorProducto($producto->getId());
+        }
+        return $productos;
     }
 
 
@@ -72,21 +113,6 @@ class Producto
         return $this->alt;
     }
 
-    /**
-     * Get the value of etiqueta
-     */
-    public function getEtiqueta(): ?string
-    {
-        return $this->etiqueta;
-    }
-
-    /**
-     * Get the value of tipoEtiqueta
-     */
-    public function getTipoEtiqueta(): ?string
-    {
-        return $this->tipoEtiqueta;
-    }
 
     /**
      * Get the value of descripcion
@@ -149,16 +175,6 @@ class Producto
         $this->alt = $alt;
     }
 
-    public function setEtiqueta(string $etiqueta): void
-    {
-        $this->etiqueta = $etiqueta;
-    }
-
-    public function setTipoEtiqueta(string $tipoEtiqueta): void
-    {
-        $this->tipoEtiqueta = $tipoEtiqueta;
-    }
-
     public function setDescripcion(string $descripcion): void
     {
         $this->descripcion = $descripcion;
@@ -192,5 +208,10 @@ class Producto
     public function setDescripcionExtendida(string $descripcionExtendida): void
     {
         $this->descripcion_extendida = $descripcionExtendida;
+    }
+
+    public function getEtiquetaList(): array
+    {
+        return $this->etiquetaList;
     }
 }

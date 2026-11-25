@@ -1,11 +1,9 @@
 <?php
 require_once __DIR__ . "/includes/whitelist.php";
+require_once __DIR__ . "/classes/Etiqueta.php";
 /* require_once __DIR__ . "/data/product_list.php"; */
 
-
-/* echo "<pre>";
-print_r($_GET);
-echo "</pre>"; */
+$etiquetas = Etiqueta::getTodas();
 
 
 /* $content = (isset($_GET['content'])) ? $_GET['content'] : 'home'; */
@@ -54,7 +52,7 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
                 <div class="collapse navbar-collapse" id="navMenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href=<?= $white_list['home']['url'] ?>>Inicio</a>
+                            <a class="nav-link" href="<?= $white_list['home']['url'] ?>">Inicio</a>
                         </li>
 
 
@@ -63,18 +61,19 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
                                 Productos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href=<?= $white_list['products']['url'] . "todo"  ?>>Catálogo</a></li>
-                                <li><a class="dropdown-item" href=<?= $white_list['products']['url'] . "nuevo" ?>>Nuevos ingresos</a></li>
-                                <li><a class="dropdown-item" href=<?= $white_list['products']['url'] . "oferta"?>>Ofertas</a></li>
+                                <li><a class="dropdown-item" href="<?= $white_list['products']['url'] . "todo"  ?>">Catálogo</a></li>
+                                <?php foreach ($etiquetas as $etiqueta) : ?>
+                                    <li><a class="dropdown-item" href="<?= $white_list['products']['url'] . $etiqueta->getId() ?>"><?= $etiqueta->getNombre() ?></a></li>
+                                <?php endforeach; ?>
                             </ul>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href=<?= $white_list['process']['url'] ?>>Nuestro proceso</a>
+                            <a class="nav-link" href="<?= $white_list['process']['url'] ?>">Nuestro proceso</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href=<?= $white_list['contact']['url'] ?>>Contacto</a>
+                            <a class="nav-link" href="<?= $white_list['contact']['url'] ?>">Contacto</a>
                         </li>
                     </ul>
                 </div>

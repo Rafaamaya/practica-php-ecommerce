@@ -6,34 +6,30 @@ require_once __DIR__ . "/../classes/Producto.php";
 
 
 
-    $productos = Producto::getCatalogoCompleto();
 
 
-    echo "<pre>";
+/*     echo "<pre>";
     print_r($productos);
-    echo "</pre>";
+    echo "</pre>"; */
 
 
-$etiqueta = $_GET['etiqueta'] ?? null;
-$catalogo_filtrado = null;
-$texto_titulo = "";
+$titulos = [
+    'Oferta' => 'Ofertas de loco',
+    'Nuevo'  => 'Si estás re manija, acá tenés lo nuevo que entró',
+    'Últimas unidades' => 'Si te dormiste, estas son las últimas unidades que quedan',
+];
 
-switch ($etiqueta) {
-    case strtolower($etiqueta) == 'oferta':
-        $texto_titulo = "Ofertas de loco";
-        $catalogo_filtrado = filtrar_etiqueta($etiqueta);
-        break;
-    case strtolower($etiqueta) == 'nuevo':
-        $texto_titulo = "Si estas re manija aca tenes lo nuevo que entro!!!";
-        $catalogo_filtrado = filtrar_etiqueta($etiqueta);
-        break;
-    case strtolower($etiqueta) == 'todo':
-        $catalogo_filtrado = $productos;
-        $texto_titulo = "Nuestras figuras";
-        break;
-    default:
-        $texto_titulo = "OPSS Algo salio mal";
-        break;
+$etiquetaId = (int) ($_GET['etiqueta'] ?? 0);
+$etiquetaActual = Etiqueta::getPorId($etiquetaId);
+
+
+if ($etiquetaActual) {
+    $nombre = $etiquetaActual->getNombre();
+    $texto_titulo = $titulos[$nombre] ?? $nombre;
+    $catalogo_filtrado = Producto::getPorEtiqueta($etiquetaId);
+} else {
+    $texto_titulo = "Nuestras figuras";
+    $catalogo_filtrado = Producto::getCatalogoCompleto();
 }
 ?>
 
@@ -53,11 +49,11 @@ switch ($etiqueta) {
                             <div class="producto-info text-center">
                                 <h3>
                                     <?= $producto->getNombre(); ?>
-                                    <?php if (null !== $producto->getEtiqueta()): ?>
-                                        <span class="badge text-bg-<?= $producto->getTipoEtiqueta(); ?> align-middle">
-                                            <?= $producto->getEtiqueta(); ?>
+                                    <?php foreach ($producto->getEtiquetaList() as $etiqueta): ?>
+                                        <span class="badge text-bg-<?= $etiqueta->getTipo(); ?> align-middle">
+                                            <?= $etiqueta->getNombre(); ?>
                                         </span>
-                                    <?php endif; ?>
+                                    <?php endforeach; ?>
                                 </h3>
                                 <p><?= $producto->getDescripcion(); ?></p>
                                 <p><strong class="fs-4"><?= $producto->getPrecio(); ?></strong></p>

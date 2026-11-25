@@ -1,0 +1,97 @@
+<?php
+
+require_once __DIR__ . "/Conexion.php";
+
+class Etiqueta
+{
+    private int $id;
+    private string $nombre;
+    private string $tipo;
+
+
+
+
+
+    /**
+     * Devuelve todas las etiquetas (para el menú y, más adelante, para el backend).
+     * @return Etiqueta[] Array de objetos Etiqueta
+     */
+    public static function getTodas(): array
+    {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT * FROM etiquetas ORDER BY id";
+        try {
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+            $PDOStatement->execute();
+            return $PDOStatement->fetchAll();
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al obtener las etiquetas. Intenta más tarde.");
+        }
+    }
+    /**
+     * Devuelve una etiqueta por su id, o null si no existe.
+     * @param int $id ID de la etiqueta
+     * @return Etiqueta|null
+     */
+    public static function getPorId(int $id): ?Etiqueta
+    {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT * FROM etiquetas WHERE id = :id";
+        try {
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+            $PDOStatement->execute(['id' => $id]);
+            $etiqueta = $PDOStatement->fetch();
+            return $etiqueta ?: null;
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al obtener la etiqueta. Intenta más tarde.");
+        }
+    }
+
+
+
+    /**
+     * Devuelve las etiquetas de un producto como objetos Etiqueta.
+     * @param int $productoId ID del producto
+     * @return Etiqueta[] Array de objetos Etiqueta
+     */
+    public static function getPorProducto(int $productoId): array
+    {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT etiquetas.*
+          FROM etiquetas
+          INNER JOIN producto_etiqueta ON producto_etiqueta.etiqueta_id = etiquetas.id
+          WHERE producto_etiqueta.producto_id = :producto_id
+          ORDER BY etiquetas.id";
+        try {
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+            $PDOStatement->execute(['producto_id' => $productoId]);
+            return $PDOStatement->fetchAll();
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al obtener las etiquetas. Intenta más tarde.");
+        }
+    }
+
+
+    
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getNombre(): string
+    {
+        return $this->nombre;
+    }
+
+    public function getTipo(): string
+    {
+        return $this->tipo;
+    }
+}
