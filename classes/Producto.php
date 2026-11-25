@@ -3,6 +3,7 @@
 require_once __DIR__ . "/Conexion.php";
 require_once __DIR__ . "/Etiqueta.php";
 require_once __DIR__ . "/Imagen.php";
+require_once __DIR__ . "/FormaPago.php";
 
 class Producto
 {
@@ -11,6 +12,7 @@ class Producto
     private string $nombre;
     private array $imagenList = [];
     private array $etiquetaList = [];
+    private array $pagoList = [];
     private string $descripcion;
     private string $precio;
     private float $altura_cm;
@@ -69,6 +71,34 @@ class Producto
         } catch (Throwable $th) {
             echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
             die("Error al filtrar los productos. Intenta más tarde.");
+        }
+    }
+
+    /**
+     * Devuelve un producto por su ID.
+     * @param int $id ID del producto
+     * @return Producto|null Objeto Producto o null si no se encuentra
+     */
+    public static function getPorId(int $id): ?Producto
+    {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT *
+                  FROM productos
+                  WHERE id = :id";
+        try {
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+            $PDOStatement->execute(['id' => $id]);
+            $producto = $PDOStatement->fetch();
+            if ($producto) {
+                $producto->etiquetaList = Etiqueta::getPorProducto($producto->getId());
+                $producto->imagenList = Imagen::getImagenesPorProducto($producto->getId());
+                $producto->pagoList = FormaPago::getPorProducto($producto->getId());
+            }
+            return $producto ?: null;
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al obtener el producto. Intenta más tarde.");
         }
     }
 
@@ -209,5 +239,13 @@ class Producto
     public function setImagenList(array $imagenList): void
     {
         $this->imagenList = $imagenList;
+    }
+
+    /**
+     * @return FormaPago[] Formas de pago del producto
+     */
+    public function getPagoList(): array
+    {
+        return $this->pagoList;
     }
 }
