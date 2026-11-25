@@ -2,37 +2,41 @@
 
 require_once __DIR__ . "/Conexion.php";
 require_once __DIR__ . "/Etiqueta.php";
+require_once __DIR__ . "/Imagen.php";
 
 class Producto
 {
 
     private int $id;
     private string $nombre;
-    private string $imagen;
-    private string $alt;
-    private string $descripcion;
+    private array $imagenList = [];
     private array $etiquetaList = [];
+    private string $descripcion;
     private string $precio;
     private float $altura_cm;
-    private int $base_incluida;
     private string $acabado;
+    private int $base_incluida;
     private string $edicion;
     private string $descripcion_extendida;
 
 
+    /**
+     * Devuelve todos los productos de la base de datos como objetos Producto.
+     * @return Producto[] Array de objetos Producto
+     */
     public static function getCatalogoCompleto(): array
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT productos.*, imagenes.ruta AS imagen, imagenes.alt
-          FROM productos
-          LEFT JOIN imagenes ON imagenes.producto_id = productos.id AND imagenes.orden = 1
-          ORDER BY productos.id";
+        $query = "SELECT *
+                  FROM productos
+                  ORDER BY productos.id";
         try {
             $PDOStatement = $conexion->prepare($query);
             $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
             $PDOStatement->execute();
             $productos = $PDOStatement->fetchAll();
             $productos = self::cargarEtiquetas($productos);
+            $productos = self::cargarImagenes($productos);
             return $productos;
         } catch (Throwable $th) {
             echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
@@ -48,10 +52,9 @@ class Producto
     public static function getPorEtiqueta(int $etiquetaId): array
     {
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT productos.*, imagenes.ruta AS imagen, imagenes.alt
+        $query = "SELECT productos.*
                   FROM productos
                   INNER JOIN producto_etiqueta ON producto_etiqueta.producto_id = productos.id
-                  LEFT JOIN imagenes ON imagenes.producto_id = productos.id AND imagenes.orden = 1
                   WHERE producto_etiqueta.etiqueta_id = :etiqueta_id
                   ORDER BY productos.id";
         try {
@@ -60,6 +63,8 @@ class Producto
             $PDOStatement->execute(['etiqueta_id' => $etiquetaId]);
             $productos = $PDOStatement->fetchAll();
             $productos = self::cargarEtiquetas($productos);
+            $productos = self::cargarImagenes($productos);
+
             return $productos;
         } catch (Throwable $th) {
             echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
@@ -80,6 +85,14 @@ class Producto
         return $productos;
     }
 
+    private static function cargarImagenes(array $productos): array
+    {
+        foreach ($productos as $producto) {
+            $producto->imagenList = Imagen::getImagenesPorProducto($producto->getId());
+        }
+        return $productos;
+    }
+
 
     /**
      * Get the value of id
@@ -96,23 +109,6 @@ class Producto
     {
         return $this->nombre;
     }
-
-    /**
-     * Get the value of imagen
-     */
-    public function getImagen(): string
-    {
-        return $this->imagen;
-    }
-
-    /**
-     * Get the value of alt
-     */
-    public function getAlt(): string
-    {
-        return $this->alt;
-    }
-
 
     /**
      * Get the value of descripcion
@@ -165,16 +161,6 @@ class Producto
         $this->nombre = $nombre;
     }
 
-    public function setImagen(string $imagen): void
-    {
-        $this->imagen = $imagen;
-    }
-
-    public function setAlt(string $alt): void
-    {
-        $this->alt = $alt;
-    }
-
     public function setDescripcion(string $descripcion): void
     {
         $this->descripcion = $descripcion;
@@ -213,5 +199,15 @@ class Producto
     public function getEtiquetaList(): array
     {
         return $this->etiquetaList;
+    }
+
+    public function getImagenList(): array
+    {
+        return $this->imagenList;
+    }
+
+    public function setImagenList(array $imagenList): void
+    {
+        $this->imagenList = $imagenList;
     }
 }

@@ -1,17 +1,7 @@
 <?php
 
 require_once __DIR__ . "/../includes/whitelist.php";
-require_once __DIR__ . "/../includes/funciones.php";
 require_once __DIR__ . "/../classes/Producto.php";
-
-
-
-
-
-/*     echo "<pre>";
-    print_r($productos);
-    echo "</pre>"; */
-
 
 $titulos = [
     'Oferta' => 'Ofertas de loco',
@@ -44,8 +34,8 @@ if ($etiquetaActual) {
                 <?php foreach ($catalogo_filtrado as $producto): ?>
                     <div class="col-12 col-md-6 col-lg-4 col-xl-3">
                         <div class="border rounded shadow-sm h-100 producto">
-                            <img src="img/productos/<?= $producto->getImagen(); ?>" class="img-fluid"
-                                alt="<?= $producto->getAlt(); ?>">
+                            <img src="img/productos/<?= $producto->getImagenList()[0]->getRuta(); ?>" class="img-fluid"
+                                alt="<?= $producto->getImagenList()[0]->getAlt(); ?>">
                             <div class="producto-info text-center">
                                 <h3>
                                     <?= $producto->getNombre(); ?>

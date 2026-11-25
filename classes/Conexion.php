@@ -32,5 +32,3 @@ class Conexion
         return $this->conexion;
     }
 }
-
-?>
