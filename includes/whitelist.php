@@ -32,5 +32,9 @@ $white_list = [
     "gracias" => [
         "titulo" => "Mensaje enviado",
         "url" => "index.php?content=gracias"
+    ],
+    "alumno" => [
+        "titulo" => "Sobre mí",
+        "url" => "index.php?content=alumno"
     ]
 ];

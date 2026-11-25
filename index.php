@@ -39,7 +39,8 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
 </head>
 
 
-<body>
+<!-- d-flex flex-column + min-vh-100: el body ocupa toda la pantalla y apila header, main y footer -->
+<body class="d-flex flex-column min-vh-100">
 
     <!-- ===== NAVBAR ===== -->
     <header>
@@ -75,13 +76,17 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
                         <li class="nav-item">
                             <a class="nav-link" href="<?= $white_list['contact']['url'] ?>">Contacto</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= $white_list['alumno']['url'] ?>">Alumno</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container mt-4">
+    <!-- flex-grow-1: el main crece y empuja el footer al fondo cuando el contenido es corto -->
+    <main class="container mt-4 flex-grow-1">
         <?php
         require_once "views/$content.php";
         ?>
@@ -92,11 +97,11 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
         <div class="container">
             <div class="row align-items-center g-4 ">
 
-                <div class="col-12 col-md-7">
+                <div class="col-12 text-center">
                     <h2 class="h4">Figuras de Colección 3D</h2>
                     <p class="mb-1"><strong>Impresas en 3D</strong> y pintadas a mano.</p>
                     <p class="mb-2 text-secondary"><em>Sitio creado con fines educativos.</em></p>
-                    <div class="d-flex gap-3 fs-3 justify-content-center justify-content-md-start">
+                    <div class="d-flex gap-3 fs-3 justify-content-center">
                         <a href="https://www.instagram.com/rafi.amaya/" class="text-light" aria-label="Instagram"
                             target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram"></i></a>
                         <a href="https://www.linkedin.com/in/rafael-amaya/" class="text-light" aria-label="LinkedIn"
@@ -104,14 +109,6 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
                         <a href="https://x.com/RafaAmaya82" class="text-light" aria-label="X" target="_blank"
                             rel="noopener noreferrer"><i class="bi bi-twitter-x"></i></a>
                     </div>
-                </div>
-
-                <div class="col-12 col-md-5 text-center">
-                    <img src="img/foto-perfil.jpg" width="250" class="rounded-circle mb-3" alt="Foto de Rafael Amaya">
-                    <h3 class="h5">Datos del alumno</h3>
-                    <p class="mb-1"><strong>Rafael Amaya</strong></p>
-                    <p class="mb-1">Fecha de nacimiento: <em>29/04/1982</em></p>
-                    <p class="mb-1">Email: <em>rafa.amaya82@gmail.com</em></p>
                 </div>
 
             </div>
