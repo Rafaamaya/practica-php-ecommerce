@@ -1,18 +1,13 @@
 <?php
 require_once __DIR__ . "/includes/whitelist.php";
 require_once __DIR__ . "/classes/Etiqueta.php";
+require_once __DIR__ . "/classes/Vista.php";
 
+$seccion = $_GET['content'] ?? 'home'; // Operador de fusión de null (PHP 7+)  
+$content = Vista::validarVista($seccion);
 $etiquetas = Etiqueta::getTodas();
 
 
-/* $content = (isset($_GET['content'])) ? $_GET['content'] : 'home'; */
-$seccion = $_GET['content'] ?? 'home'; // Operador de fusión de null (PHP 7+)  
-
-if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"))) {
-    $content = $seccion;
-} else {
-    $content = '404';
-}
 
 ?>
 
@@ -22,7 +17,7 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Figuras de Colección — <?= $white_list[$content]['titulo'] ?? 'Figuras 3D' ?> </title>
+    <title>Figuras de Colección — <?= $content->getTitulo() ?> </title>
 
 
     <!-- Bootstrap 5.3 vía CDN (jsDelivr)-->
@@ -87,7 +82,7 @@ if (array_key_exists($seccion, $white_list) && (file_exists("views/$seccion.php"
     <!-- flex-grow-1: el main crece y empuja el footer al fondo cuando el contenido es corto -->
     <main class="container mt-4 flex-grow-1">
         <?php
-        require_once "views/$content.php";
+        require_once "views/" . $content->getNombre() . ".php";
         ?>
     </main>
 
