@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . "/includes/whitelist.php";
 require_once __DIR__ . "/classes/Etiqueta.php";
 require_once __DIR__ . "/classes/Vista.php";
 
@@ -47,7 +46,7 @@ $etiquetas = Etiqueta::getTodas();
                 <div class="collapse navbar-collapse" id="navMenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $white_list['home']['url'] ?>">Inicio</a>
+                            <a class="nav-link" href="index.php?content=home">Inicio</a>
                         </li>
 
 
@@ -56,22 +55,22 @@ $etiquetas = Etiqueta::getTodas();
                                 Productos
                             </a>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="<?= $white_list['products']['url'] . "todo"  ?>">Catálogo</a></li>
+                                <li><a class="dropdown-item" href="index.php?content=products&etiqueta=todo">Catálogo</a></li>
                                 <?php foreach ($etiquetas as $etiqueta) : ?>
-                                    <li><a class="dropdown-item" href="<?= $white_list['products']['url'] . $etiqueta->getId() ?>"><?= $etiqueta->getNombre() ?></a></li>
+                                    <li><a class="dropdown-item" href="index.php?content=products&etiqueta=<?= $etiqueta->getId() ?>"><?= $etiqueta->getNombre() ?></a></li>
                                 <?php endforeach; ?>
                             </ul>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $white_list['process']['url'] ?>">Nuestro proceso</a>
+                            <a class="nav-link" href="index.php?content=process">Nuestro proceso</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $white_list['contact']['url'] ?>">Contacto</a>
+                            <a class="nav-link" href="index.php?content=contact">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= $white_list['alumno']['url'] ?>">Alumno</a>
+                            <a class="nav-link" href="index.php?content=alumno">Alumno</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="admin/index.php">Panel</a>

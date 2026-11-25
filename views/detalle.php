@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../includes/whitelist.php";
 require_once __DIR__ . "/../classes/Producto.php";
 
 $id = (int) ($_GET['id'] ?? 0);
@@ -50,7 +49,7 @@ $unproducto = Producto::getPorId($id);
                         </ul>
 
                         <a href="#" class="btn btn-primary w-100 mb-2">Comprar ahora</a>
-                        <a href="<?= $white_list['products']['url'] . "todo"  ?>" class="btn btn-outline-secondary w-100">Seguir viendo productos</a>
+                        <a href="index.php?content=products&etiqueta=todo" class="btn btn-outline-secondary w-100">Seguir viendo productos</a>
                     </div>
                 </div>
 
@@ -109,6 +108,6 @@ $unproducto = Producto::getPorId($id);
     <section class="my-5 text-center">
         <h1>Producto no encontrado</h1>
         <p>La figura que buscás <strong>no existe o ya no está disponible</strong>.</p>
-        <a href="<?= $white_list['products']['url']; ?>" class="btn btn-primary">Ver el catálogo</a>
+        <a href="index.php?content=products&etiqueta=todo" class="btn btn-primary">Ver el catálogo</a>
     </section>
 <?php endif; ?>

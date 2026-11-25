@@ -1,6 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../includes/whitelist.php";
 require_once __DIR__ . "/../classes/Producto.php";
 
 $titulos = [
@@ -47,7 +46,7 @@ if ($etiquetaActual) {
                                 </h2>
                                 <p><?= $producto->getDescripcion(); ?></p>
                                 <p><strong class="fs-4"><?= $producto->getPrecio(); ?></strong></p>
-                                <a href="<?= $white_list['detalle']['url'] . "&id="  . $producto->getId() ?>" class="btn btn-success">Detalles</a>
+                                <a href="index.php?content=detalle&id=<?= $producto->getId() ?>" class="btn btn-success">Detalles</a>
                             </div>
                         </div>
                     </div>
