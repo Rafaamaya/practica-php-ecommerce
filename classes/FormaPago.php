@@ -8,6 +8,9 @@ class FormaPago
 
     /**
      * Devuelve las formas de pago de un producto, con la descripción propia de ese producto.
+     *
+     * Hace un INNER JOIN entre producto_pagos y formas_pago.
+     *
      * @param int $productoId ID del producto
      * @return FormaPago[] Array de objetos FormaPago
      */
@@ -30,16 +33,31 @@ class FormaPago
         }
     }
 
+    /**
+     * Devuelve el id de la forma de pago.
+     *
+     * @return int El id de la forma de pago
+     */
     public function getId(): int
     {
         return $this->id;
     }
 
+    /**
+     * Devuelve el título de la forma de pago.
+     *
+     * @return string El título de la forma de pago
+     */
     public function getTitulo(): string
     {
         return $this->titulo;
     }
 
+    /**
+     * Devuelve la descripción de la forma de pago para este producto.
+     *
+     * @return string La descripción de la forma de pago para este producto
+     */
     public function getDescripcion(): string
     {
         return $this->descripcion;

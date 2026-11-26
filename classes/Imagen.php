@@ -10,11 +10,11 @@ class Imagen
     private int $orden;
 
     /**
-     * Devuelve todas las imágenes de un producto como objetos Imagen.
+     * Devuelve todas las imágenes de un producto, ordenadas por el campo orden.
+     *
      * @param int $productoId ID del producto
      * @return Imagen[] Array de objetos Imagen
      */
-
     public static function getImagenesPorProducto(int $productoId): array
     {
         $conexion = Conexion::getConexion();
@@ -31,7 +31,9 @@ class Imagen
     }
 
     /**
-     * Get the value of id
+     * Devuelve el id de la imagen.
+     *
+     * @return int El id de la imagen
      */
     public function getId(): int
     {
@@ -39,51 +41,95 @@ class Imagen
     }
 
     /**
-     * Get the value of producto_id
+     * Devuelve el id del producto al que pertenece la imagen.
+     *
+     * @return int El id del producto al que pertenece la imagen
      */
     public function getProductoId(): int
     {
         return $this->producto_id;
     }
 
+    /**
+     * Devuelve el nombre del archivo de la imagen.
+     *
+     * @return string El nombre del archivo de la imagen
+     */
     public function getRuta(): string
     {
         return $this->ruta;
     }
 
+    /**
+     * Devuelve el texto alternativo de la imagen.
+     *
+     * @return string El texto alternativo de la imagen
+     */
     public function getAlt(): string
     {
         return $this->alt;
     }
 
+    /**
+     * Devuelve la posición de la imagen en la galería.
+     *
+     * @return int La posición de la imagen en la galería
+     */
     public function getOrden(): int
     {
         return $this->orden;
     }
 
     /**
-     * Set the value of id
+     * Asigna el id de la imagen.
+     *
+     * @param int $id El id de la imagen
+     * @return void
      */
     public function setId(int $id): void
     {
         $this->id = $id;
     }
 
+    /**
+     * Asigna el id del producto al que pertenece la imagen.
+     *
+     * @param int $producto_id El id del producto al que pertenece la imagen
+     * @return void
+     */
     public function setProductoId(int $producto_id): void
     {
         $this->producto_id = $producto_id;
     }
 
+    /**
+     * Asigna el nombre del archivo de la imagen.
+     *
+     * @param string $ruta El nombre del archivo de la imagen
+     * @return void
+     */
     public function setRuta(string $ruta): void
     {
         $this->ruta = $ruta;
     }
 
+    /**
+     * Asigna el texto alternativo de la imagen.
+     *
+     * @param string $alt El texto alternativo de la imagen
+     * @return void
+     */
     public function setAlt(string $alt): void
     {
         $this->alt = $alt;
     }
 
+    /**
+     * Asigna la posición de la imagen en la galería.
+     *
+     * @param int $orden La posición de la imagen en la galería
+     * @return void
+     */
     public function setOrden(int $orden): void
     {
         $this->orden = $orden;

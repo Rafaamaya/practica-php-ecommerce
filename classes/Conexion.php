@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Clase de conexión a la base de datos
- */
-
 class Conexion
 {
 
@@ -15,7 +11,11 @@ class Conexion
     private static ?PDO $conexion = null;
 
     /**
-     * Conecta a la base de datos y guarda la conexión en la propiedad estática $conexion.
+     * Crea la conexión PDO y la guarda en la propiedad estática $conexion.
+     *
+     * Si no se puede conectar, muestra un mensaje de error y corta la ejecución.
+     *
+     * @return void
      */
     private static function conectar():void
     {
@@ -29,6 +29,7 @@ class Conexion
 
     /**
      * Devuelve la conexión a la base de datos.
+     *
      * Si todavía no existe, la crea con conectar(); si ya existe, reutiliza la misma.
      *
      * @return PDO Conexión a la base de datos

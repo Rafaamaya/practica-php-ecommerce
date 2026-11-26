@@ -11,7 +11,10 @@ class Etiqueta
 
 
     /**
-     * Devuelve todas las etiquetas (para el menú y, más adelante, para el backend).
+     * Devuelve todas las etiquetas ordenadas por id.
+     *
+     * Se usa para armar el menú de filtros y el listado del panel.
+     *
      * @return Etiqueta[] Array de objetos Etiqueta
      */
     public static function getTodas(): array
@@ -30,9 +33,10 @@ class Etiqueta
     }
 
     /**
-     * Devuelve una etiqueta por su id, o null si no existe.
+     * Busca una etiqueta por su id.
+     *
      * @param int $id ID de la etiqueta
-     * @return Etiqueta|null
+     * @return Etiqueta|null Objeto Etiqueta, o null si no existe
      */
     public static function getPorId(int $id): ?Etiqueta
     {
@@ -51,7 +55,10 @@ class Etiqueta
     }
 
     /**
-     * Devuelve las etiquetas de un producto como objetos Etiqueta.
+     * Devuelve las etiquetas asignadas a un producto.
+     *
+     * Hace un INNER JOIN con la tabla pivot producto_etiqueta.
+     *
      * @param int $productoId ID del producto
      * @return Etiqueta[] Array de objetos Etiqueta
      */
@@ -76,8 +83,9 @@ class Etiqueta
 
     /**
      * Inserta una nueva etiqueta en la base de datos.
-     * @param string $nombre Nombre de la etiqueta
-     * @param string $tipo Tipo de la etiqueta (color)
+     *
+     * @param string $nombre Nombre de la etiqueta (único, hasta 30 caracteres)
+     * @param string $tipo Color de Bootstrap de la etiqueta (success, danger, etc.)
      * @return bool True si se insertó correctamente, false en caso contrario
      */
     public static function insertEtiqueta(string $nombre, string $tipo): bool
@@ -94,10 +102,11 @@ class Etiqueta
     }
 
     /**
-     * Actualiza una etiqueta existente en la base de datos.
-     * @param int $id ID de la etiqueta
-     * @param string $nombre Nombre de la etiqueta
-     * @param string $tipo Tipo de la etiqueta (color)
+     * Actualiza el nombre y el color de una etiqueta existente.
+     *
+     * @param int $id ID de la etiqueta a actualizar
+     * @param string $nombre Nuevo nombre de la etiqueta
+     * @param string $tipo Nuevo color de Bootstrap de la etiqueta
      * @return bool True si se actualizó correctamente, false en caso contrario
      */
     public static function updateEtiqueta(int $id, string $nombre, string $tipo): bool
@@ -114,10 +123,12 @@ class Etiqueta
     }
 
     /**
-     * Elimina la etiqueta de la base de datos.
+     * Elimina esta etiqueta de la base de datos.
+     *
      * Primero la quita de todos los productos que la tienen (tabla producto_etiqueta),
      * porque la FK etiqueta_id es RESTRICT y no deja borrar una etiqueta en uso.
      * Los productos no se borran: solo pierden esta etiqueta.
+     *
      * @return bool True si se eliminó correctamente, false en caso contrario
      */
     public function deleteEtiqueta(): bool
@@ -141,16 +152,31 @@ class Etiqueta
 
 
 
+    /**
+     * Devuelve el id de la etiqueta.
+     *
+     * @return int El id de la etiqueta
+     */
     public function getId(): int
     {
         return $this->id;
     }
 
+    /**
+     * Devuelve el nombre de la etiqueta.
+     *
+     * @return string El nombre de la etiqueta
+     */
     public function getNombre(): string
     {
         return $this->nombre;
     }
 
+    /**
+     * Devuelve el color de Bootstrap de la etiqueta (success, danger, etc.).
+     *
+     * @return string El color de Bootstrap de la etiqueta (success, danger, etc.)
+     */
     public function getTipo(): string
     {
         return $this->tipo;
