@@ -47,7 +47,7 @@ $content = Vista::validarVista($seccion, 'admin/views');
                 <div class="collapse navbar-collapse" id="navMenu">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Administrar Etiquetas</a>
+                            <a class="nav-link" href="index.php?content=admin_etiquetas">Administrar Etiquetas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Administrar Formas de Pago</a>
@@ -56,7 +56,7 @@ $content = Vista::validarVista($seccion, 'admin/views');
                             <a class="nav-link" href="#">Administrar imágenes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Administrar Productos</a>
+                            <a class="nav-link" href="index.php?content=admin_prodcutos">Administrar Productos</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../index.php">ir al frontend</a>

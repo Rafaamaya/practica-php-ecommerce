@@ -159,3 +159,264 @@
     width: 2.25rem;
     height: 2.25rem;
 }
+
+/* ============================================
+   ADMIN: inventario de productos
+   ============================================ */
+
+/* Encabezado oscuro con los colores de la tienda y un brillo dorado en la esquina */
+.inventario__hero {
+    background: radial-gradient(circle at 100% 0%, rgba(180, 136, 47, 0.45), transparent 45%),
+                linear-gradient(135deg, #241a1d 0%, #3a2a2f 100%);
+    border-bottom: 4px solid #b4882f;
+}
+
+.inventario__eyebrow {
+    color: #b4882f;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+}
+
+.inventario__contador {
+    color: #b4882f;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.inventario__btn-agregar {
+    background-color: #b4882f;
+    color: #241a1d;
+    font-weight: 700;
+}
+
+.inventario__btn-agregar:hover {
+    background-color: #ffffff;
+    color: #241a1d;
+}
+
+/* La tabla separa sus filas: así cada fila se puede dibujar como una tarjeta */
+.inventario__tabla {
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
+}
+
+.inventario__tabla thead th {
+    color: #6c757d;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0 1rem;
+}
+
+.inventario__tabla td {
+    background-color: #ffffff;
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Bordes redondeados solo en la primera y la última celda de cada fila */
+.inventario__tabla td:first-child {
+    border-radius: 1rem 0 0 1rem;
+    border-left: 4px solid transparent;
+}
+
+.inventario__tabla td:last-child {
+    border-radius: 0 1rem 1rem 0;
+}
+
+.inventario__fila {
+    box-shadow: 0 2px 10px rgba(36, 26, 29, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* Al pasar el mouse la fila "se levanta" y aparece una franja dorada a la izquierda */
+.inventario__fila:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(36, 26, 29, 0.15);
+}
+
+.inventario__fila:hover td:first-child {
+    border-left-color: #b4882f;
+}
+
+.inventario__id {
+    color: #b4882f;
+    font-family: monospace;
+    font-weight: 700;
+}
+
+.inventario__imagen {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.inventario__fila:hover .inventario__imagen {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+/* Ícono de cada dato de la ficha (altura, acabado) dentro de un círculo dorado suave */
+.inventario__ficha-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: rgba(180, 136, 47, 0.15);
+    color: #b4882f;
+    flex-shrink: 0;
+}
+
+.inventario__ficha-label {
+    color: #6c757d;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.inventario__precio {
+    display: inline-block;
+    border: 2px solid #b4882f;
+    border-radius: 50rem;
+    padding: 0.25rem 0.9rem;
+    color: #241a1d;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* Botones de acción redondos, solo con ícono */
+.inventario__accion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.inventario__accion--editar {
+    background-color: #fff3cd;
+    color: #997404;
+}
+
+.inventario__accion--editar:hover {
+    background-color: #ffc107;
+    color: #241a1d;
+}
+
+.inventario__accion--eliminar {
+    background-color: #f8d7da;
+    color: #b02a37;
+}
+
+.inventario__accion--eliminar:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+}
+
+/* En celular: se oculta el encabezado y cada fila pasa a ser una tarjeta apilada */
+@media (max-width: 767.98px) {
+    .inventario__tabla thead {
+        display: none;
+    }
+
+    .inventario__tabla tr {
+        display: block;
+        background-color: #ffffff;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+        padding: 0.5rem 0;
+    }
+
+    .inventario__tabla td {
+        display: block;
+        padding: 0.4rem 1rem;
+        border-radius: 0 !important;
+        border-left: 0 !important;
+        text-align: left !important;
+        background-color: transparent;
+    }
+}
+
+/* ============================================
+   ADMIN: formulario de producto
+   ============================================ */
+
+/* Título de cada sección del formulario: ícono dorado + texto en mayúsculas */
+.formulario__leyenda {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #241a1d;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(180, 136, 47, 0.3);
+}
+
+/* Al hacer foco en un campo, el borde toma el dorado de la tienda en lugar del azul de Bootstrap */
+.card .form-control:focus,
+.card .form-check-input:focus {
+    border-color: #b4882f;
+    box-shadow: 0 0 0 0.2rem rgba(180, 136, 47, 0.25);
+}
+
+.form-check-input:checked {
+    background-color: #b4882f;
+    border-color: #b4882f;
+}
+
+/* ============================================
+   ADMIN: etiquetas
+   ============================================ */
+
+/* La vista previa se muestra un poco más grande que en el catálogo para que se lea bien */
+.etiqueta-admin__preview {
+    font-size: 0.85rem;
+    padding: 0.45em 1em;
+}
+
+/* Cuadradito con el color de Bootstrap que usa la etiqueta */
+.etiqueta-admin__muestra {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.35rem;
+}
+
+/* Cada opción de color es una tarjetita clickeable (el radio real queda oculto con .btn-check) */
+.color-opcion {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.color-opcion:hover {
+    border-color: rgba(180, 136, 47, 0.5);
+}
+
+/* Opción elegida: borde dorado y fondo suave */
+.btn-check:checked + .color-opcion {
+    border-color: #b4882f;
+    background-color: rgba(180, 136, 47, 0.08);
+}
+
+/* Foco con teclado: mismo anillo dorado que los campos del formulario */
+.btn-check:focus-visible + .color-opcion {
+    box-shadow: 0 0 0 0.2rem rgba(180, 136, 47, 0.25);
+}
