@@ -28,6 +28,7 @@ class Etiqueta
             die("Error al obtener las etiquetas. Intenta más tarde.");
         }
     }
+
     /**
      * Devuelve una etiqueta por su id, o null si no existe.
      * @param int $id ID de la etiqueta
@@ -48,8 +49,6 @@ class Etiqueta
             die("Error al obtener la etiqueta. Intenta más tarde.");
         }
     }
-
-
 
     /**
      * Devuelve las etiquetas de un producto como objetos Etiqueta.
@@ -94,6 +93,25 @@ class Etiqueta
         }
     }
 
+    /**
+     * Actualiza una etiqueta existente en la base de datos.
+     * @param int $id ID de la etiqueta
+     * @param string $nombre Nombre de la etiqueta
+     * @param string $tipo Tipo de la etiqueta (color)
+     * @return bool True si se actualizó correctamente, false en caso contrario
+     */
+    public static function updateEtiqueta(int $id, string $nombre, string $tipo): bool
+    {
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE etiquetas SET nombre = :nombre, tipo = :tipo WHERE id = :id";
+        try {
+            $PDOStatement = $conexion->prepare($query);
+            return $PDOStatement->execute(['id' => $id, 'nombre' => $nombre, 'tipo' => $tipo]);
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al actualizar la etiqueta. Intenta más tarde.");
+        }
+    }
 
     
 
