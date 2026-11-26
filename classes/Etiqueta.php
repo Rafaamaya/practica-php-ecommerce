@@ -113,7 +113,33 @@ class Etiqueta
         }
     }
 
-    
+    /**
+     * Elimina la etiqueta de la base de datos.
+     * Primero la quita de todos los productos que la tienen (tabla producto_etiqueta),
+     * porque la FK etiqueta_id es RESTRICT y no deja borrar una etiqueta en uso.
+     * Los productos no se borran: solo pierden esta etiqueta.
+     * @return bool True si se eliminó correctamente, false en caso contrario
+     */
+    public function deleteEtiqueta(): bool
+    {
+        $conexion = Conexion::getConexion();
+        try {
+            // 1) Quitar la etiqueta de todos los productos (borra solo las filas de la tabla pivot)
+            $query = "DELETE FROM producto_etiqueta WHERE etiqueta_id = :id";
+            $PDOStatement = $conexion->prepare($query);
+            $PDOStatement->execute(['id' => $this->id]);
+
+            // 2) Ahora que nadie la usa, borrar la etiqueta
+            $query = "DELETE FROM etiquetas WHERE id = :id";
+            $PDOStatement = $conexion->prepare($query);
+            return $PDOStatement->execute(['id' => $this->id]);
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al eliminar la etiqueta. Intenta más tarde.");
+        }
+    }
+
+
 
     public function getId(): int
     {

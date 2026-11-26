@@ -51,14 +51,15 @@ $etiquetas = Etiqueta::getTodas();
                             <code><?= $etiqueta->getTipo(); ?></code>
                         </div>
                     </td>
-                    <!-- TODO: crear las vistas de editar y eliminar etiquetas (hoy estos links dan 404) -->
+                    <!-- TODO: el tacho borra al toque, sin preguntar. Sumar una vista de confirmación
+                         ("¿Seguro que querés borrar «X»? La tienen N productos") antes de llamar a delete_etiqueta_acc.php -->
                     <td class="text-end text-nowrap">
                         <a href="index.php?content=edit_etiqueta&id=<?= $etiqueta->getId(); ?>"
                             class="inventario__accion inventario__accion--editar" title="Editar"
                             aria-label="Editar <?= $etiqueta->getNombre(); ?>">
                             <i class="bi bi-pencil" aria-hidden="true"></i>
                         </a>
-                        <a href="index.php?content=delete_etiqueta&id=<?= $etiqueta->getId(); ?>"
+                        <a href="actions/delete_etiqueta_acc.php?id=<?= $etiqueta->getId(); ?>"
                             class="inventario__accion inventario__accion--eliminar" title="Eliminar"
                             aria-label="Eliminar <?= $etiqueta->getNombre(); ?>">
                             <i class="bi bi-trash3" aria-hidden="true"></i>
