@@ -12,23 +12,32 @@ class Conexion
     private const DB_PASSWORD = '';
     private const DB_NAME = 'tiendita_db';
     private const DB_DSN = 'mysql:host=' . self::DB_SERVER . ';dbname=' . self::DB_NAME;
-    private PDO $conexion;
+    private static ?PDO $conexion = null;
 
     /**
-     * Método para obtener la conexión a la base de datos
-     *
-     * @return PDO Conexión a la base de datos
+     * Conecta a la base de datos y guarda la conexión en la propiedad estática $conexion.
      */
-
-    public function getConexion(): PDO
+    private static function conectar():void
     {
         try {
-            $this->conexion = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASSWORD);
+            self::$conexion = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASSWORD);
         } catch (\Throwable $th) {
             echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
             die("Error al conectar a la base de datos. Estamos trabajando para solucionarlo. Intenta más tarde.");
         }
+    }
 
-        return $this->conexion;
+    /**
+     * Devuelve la conexión a la base de datos.
+     * Si todavía no existe, la crea con conectar(); si ya existe, reutiliza la misma.
+     *
+     * @return PDO Conexión a la base de datos
+     */
+    public static function getConexion(): PDO
+    {
+        if (self::$conexion === null) {
+            self::conectar();
+        }
+        return self::$conexion;
     }
 }

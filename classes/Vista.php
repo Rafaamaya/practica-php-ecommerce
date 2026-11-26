@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . "/Conexion.php";
 
 class Vista
 {
@@ -17,7 +16,7 @@ class Vista
      */
     public static function validarVista(string $vista, string $carpeta = 'views'): Vista
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM vistas
                   WHERE nombre = :nombre";
         try {

@@ -1,10 +1,5 @@
 <?php
 
-require_once __DIR__ . "/Conexion.php";
-require_once __DIR__ . "/Etiqueta.php";
-require_once __DIR__ . "/Imagen.php";
-require_once __DIR__ . "/FormaPago.php";
-
 class Producto
 {
 
@@ -28,7 +23,7 @@ class Producto
      */
     public static function getCatalogoCompleto(): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT *
                   FROM productos
                   ORDER BY productos.id";
@@ -53,7 +48,7 @@ class Producto
      */
     public static function getPorEtiqueta(int $etiquetaId): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT productos.*
                   FROM productos
                   INNER JOIN producto_etiqueta ON producto_etiqueta.producto_id = productos.id
@@ -81,7 +76,7 @@ class Producto
      */
     public static function getPorId(int $id): ?Producto
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT *
                   FROM productos
                   WHERE id = :id";

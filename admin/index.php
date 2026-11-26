@@ -1,10 +1,7 @@
 <?php
 
-require_once __DIR__ . "/../classes/Vista.php";
-
+require_once __DIR__ . "/../functions/autoload.php";
 $seccion = $_GET['content'] ?? 'dashboard'; // Operador de fusión de null (PHP 7+)  
-
-
 $content = Vista::validarVista($seccion, 'admin/views');
 
 

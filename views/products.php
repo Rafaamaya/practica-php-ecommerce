@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../classes/Producto.php";
-
 $titulos = [
     'Oferta' => 'Ofertas de loco',
     'Nuevo'  => 'Si estás re manija, acá tenés lo nuevo que entró',

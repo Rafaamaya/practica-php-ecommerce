@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . "/Conexion.php";
 
 class Imagen
 {
@@ -18,7 +17,7 @@ class Imagen
 
     public static function getImagenesPorProducto(int $productoId): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM imagenes WHERE producto_id = :producto_id ORDER BY orden";
         try {
             $PDOStatement = $conexion->prepare($query);

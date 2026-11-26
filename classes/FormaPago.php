@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . "/Conexion.php";
-
 class FormaPago
 {
     private int $id;
@@ -15,7 +13,7 @@ class FormaPago
      */
     public static function getPorProducto(int $productoId): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT formas_pago.id, formas_pago.titulo, producto_pagos.descripcion
                   FROM producto_pagos
                   INNER JOIN formas_pago ON formas_pago.id = producto_pagos.forma_pago_id

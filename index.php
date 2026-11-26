@@ -1,9 +1,14 @@
 <?php
-require_once __DIR__ . "/classes/Etiqueta.php";
-require_once __DIR__ . "/classes/Vista.php";
+
+require_once __DIR__ . "/functions/autoload.php";
+
+
+
 
 $seccion = $_GET['content'] ?? 'home'; // Operador de fusión de null (PHP 7+)  
 $content = Vista::validarVista($seccion);
+// TODO: en el menú mostrar solo las etiquetas que tengan al menos un producto
+// (hoy se listan todas, aunque alguna quede sin productos y su filtro salga vacío)
 $etiquetas = Etiqueta::getTodas();
 
 

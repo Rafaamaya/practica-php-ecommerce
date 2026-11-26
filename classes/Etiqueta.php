@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . "/Conexion.php";
-
 class Etiqueta
 {
     private int $id;
@@ -18,7 +16,7 @@ class Etiqueta
      */
     public static function getTodas(): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM etiquetas ORDER BY id";
         try {
             $PDOStatement = $conexion->prepare($query);
@@ -37,7 +35,7 @@ class Etiqueta
      */
     public static function getPorId(int $id): ?Etiqueta
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM etiquetas WHERE id = :id";
         try {
             $PDOStatement = $conexion->prepare($query);
@@ -60,7 +58,7 @@ class Etiqueta
      */
     public static function getPorProducto(int $productoId): array
     {
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT etiquetas.*
           FROM etiquetas
           INNER JOIN producto_etiqueta ON producto_etiqueta.etiqueta_id = etiquetas.id
