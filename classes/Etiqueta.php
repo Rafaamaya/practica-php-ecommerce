@@ -75,6 +75,25 @@ class Etiqueta
         }
     }
 
+    /**
+     * Inserta una nueva etiqueta en la base de datos.
+     * @param string $nombre Nombre de la etiqueta
+     * @param string $tipo Tipo de la etiqueta (color)
+     * @return bool True si se insertó correctamente, false en caso contrario
+     */
+    public static function insertEtiqueta(string $nombre, string $tipo): bool
+    {
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO etiquetas (nombre, tipo) VALUES (:nombre, :tipo)";
+        try {
+            $PDOStatement = $conexion->prepare($query);
+            return $PDOStatement->execute(['nombre' => $nombre, 'tipo' => $tipo]);
+        } catch (Throwable $th) {
+            echo "<p>Se generó un error en el siguiente archivo: " . $th->getFile() . " en la línea " . $th->getLine() . "</p>";
+            die("Error al insertar la etiqueta. Intenta más tarde.");
+        }
+    }
+
 
     
 

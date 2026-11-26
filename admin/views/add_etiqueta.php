@@ -29,9 +29,7 @@ $colores = [
 
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <!-- TODO: definir el archivo que procesa el alta de la etiqueta -->
-            <form action="#" method="post" class="card border-0 shadow-sm rounded-4 p-4 p-lg-5">
-
+            <form action="actions/add_etiqueta_acc.php" method="post" class="card border-0 shadow-sm rounded-4 p-4 p-lg-5">
                 <!-- ===== 1. NOMBRE ===== -->
                 <fieldset class="mb-4">
                     <legend class="formulario__leyenda"><span class="inventario__ficha-icono"><i class="bi bi-fonts" aria-hidden="true"></i></span> Nombre</legend>

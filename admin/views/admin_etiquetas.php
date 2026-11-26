@@ -1,4 +1,6 @@
 <?php
+// TODO: mostrar un cartel de "Etiqueta creada" cuando llega ?status=success en la URL
+// (add_etiqueta_acc.php manda status=success para avisar que el INSERT se hizo bien)
 $etiquetas = Etiqueta::getTodas();
 ?>
 
