@@ -39,12 +39,21 @@ $productos = Producto::getCatalogoCompleto();
             <?php foreach ($productos as $producto): ?>
                 <tr class="inventario__fila">
                     <td class="inventario__id">#<?= $producto->getId(); ?></td>
-                    <!-- TODO: igual que en el catálogo, se asume que todo producto tiene al menos una imagen -->
                     <td>
                         <div class="d-flex align-items-center gap-3">
-                            <img src="../img/productos/<?= $producto->getImagenList()[0]->getRuta(); ?>"
-                                class="inventario__imagen"
-                                alt="<?= $producto->getImagenList()[0]->getAlt(); ?>">
+                            <!-- Mini galería: la portada (key 0) grande y las demás en miniatura al costado.
+                                 Mismo criterio que detalle.php: la portada está en img/productos y el resto en img/detalle -->
+                            <div class="inventario__galeria">
+                                <?php foreach ($producto->getImagenList() as $key => $imagen): ?>
+                                    <?php if ($key === 0): ?>
+                                        <img src="../img/productos/<?= $imagen->getRuta(); ?>"
+                                            class="inventario__imagen" alt="<?= $imagen->getAlt(); ?>">
+                                    <?php else: ?>
+                                        <img src="../img/detalle/<?= $imagen->getRuta(); ?>"
+                                            class="inventario__miniatura" alt="<?= $imagen->getAlt(); ?>">
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </div>
                             <div>
                                 <p class="fw-bold mb-0"><?= $producto->getNombre(); ?></p>
                                 <p class="small text-secondary mb-0"><em><?= $producto->getEdicion(); ?></em></p>

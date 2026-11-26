@@ -22,5 +22,5 @@ etiquetas          Etiquetas (Nuevo, Oferta, etc.).
 producto_etiqueta  Tabla pívot N a M entre productos y etiquetas.
 formas_pago        Formas de pago.
 producto_pagos     Tabla pívot N a M entre productos y formas de pago.
-usuarios           Usuarios del sistema (contraseñas con password_hash).
+usuarios           Usuarios del sistema (pendiente: login).
 vistas             Secciones del sitio.

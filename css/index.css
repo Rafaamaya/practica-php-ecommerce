@@ -247,17 +247,29 @@
     font-weight: 700;
 }
 
+/* Mini galería: grilla de 2 columnas y 2 filas.
+   La portada ocupa las dos filas de la primera columna y las miniaturas se apilan en la segunda. */
+.inventario__galeria {
+    display: grid;
+    grid-template-columns: 150px 72px;
+    grid-template-rows: 72px 72px;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
 .inventario__imagen {
+    grid-row: span 2;
     width: 150px;
     height: 150px;
     object-fit: cover;
     border-radius: 0.75rem;
-    flex-shrink: 0;
-    transition: transform 0.2s;
 }
 
-.inventario__fila:hover .inventario__imagen {
-    transform: scale(1.08) rotate(-2deg);
+.inventario__miniatura {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 0.5rem;
 }
 
 /* Ícono de cada dato de la ficha (altura, acabado) dentro de un círculo dorado suave */

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 24-11-2026 a las 15:14:49
+-- Tiempo de generación: 26-11-2026 a las 23:11:38
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -42,7 +42,9 @@ INSERT INTO `etiquetas` (`id`, `nombre`, `tipo`) VALUES
 (2, 'Oferta', 'danger'),
 (3, 'Edición limitada', 'warning'),
 (4, 'Últimas unidades', 'dark'),
-(5, 'Envío gratis', 'info');
+(5, 'Envío gratis', 'info'),
+(7, 'rafa', 'primary'),
+(10, 'pedro', 'dark');
 
 -- --------------------------------------------------------
 
@@ -310,8 +312,15 @@ INSERT INTO `vistas` (`id`, `nombre`, `titulo`, `activa`, `restringida`) VALUES
 (3, 'detalle', 'Detalle del producto', 1, 0),
 (4, 'process', 'Nuestro proceso', 1, 0),
 (5, 'contact', 'Contactanos', 1, 0),
-(6, '404', 'Página no encontrada', 1, 0),
-(7, 'test', 'Test', 0, 1);
+(8, 'alumno', 'Sobre mí', 1, 0),
+(9, 'gracias', 'Mensaje enviado', 1, 0),
+(10, 'dashboard', 'Panel de control', 1, 0),
+(11, 'admin_prodcutos', 'Administración de productos ', 1, 0),
+(12, 'add_producto', 'Agregar producto', 1, 0),
+(13, 'admin_etiquetas', 'Administrar etiquetas', 1, 0),
+(14, 'add_etiqueta', 'Agregar etiqueta', 1, 0),
+(15, 'edit_etiqueta', 'Editar etiqueta', 1, 0),
+(16, 'delete_etiqueta', 'Eliminar etiqueta', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -383,7 +392,7 @@ ALTER TABLE `vistas`
 -- AUTO_INCREMENT de la tabla `etiquetas`
 --
 ALTER TABLE `etiquetas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `formas_pago`
@@ -425,7 +434,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `vistas`
 --
 ALTER TABLE `vistas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
