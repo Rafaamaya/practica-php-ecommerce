@@ -99,21 +99,72 @@ $etiquetas = Etiqueta::getTodas();
         </fieldset>
 
         <!-- ===== 4. IMÁGENES (relación uno a muchos) ===== -->
+        <!-- Tres campos separados (máximo 3 fotos por producto): así queda claro cuál es la portada
+             y cada archivo sabe a qué carpeta va y con qué orden se guarda -->
         <fieldset class="mb-4">
             <legend class="formulario__leyenda"><span class="inventario__ficha-icono"><i class="bi bi-images" aria-hidden="true"></i></span> Imágenes</legend>
-            <label
-                for="imagenes"
-                class="form-label">
-                Fotos de la figura *
-            </label>
-            <!-- multiple + name="imagenes[]": permite subir varias fotos a la vez -->
-            <input 
-                type="file" 
-                class="form-control" 
-                id="imagenes" 
-                name="imagenes[]" 
-                accept="image/*" multiple required>
-            <p class="form-text mb-0">La <strong>primera</strong> foto es la que se muestra en el catálogo.</p>
+            <p class="small text-secondary">La <strong>portada es obligatoria</strong>; las fotos de galería son opcionales y se ven en el <em>detalle del producto</em>.</p>
+            <div class="row g-3">
+
+                <!-- Portada: orden 1, se guarda en img/productos -->
+                <div class="col-md-4">
+                    <div class="foto-campo foto-campo--portada h-100">
+                        <span class="foto-campo__numero">1</span>
+                        <label
+                            for="portada"
+                            class="form-label fw-bold">
+                            Portada *
+                        </label>
+                        <p class="small text-secondary mb-2">Se muestra en el <em>catálogo</em> y en el inventario.</p>
+                        <input
+                            type="file"
+                            class="form-control form-control-sm"
+                            id="portada"
+                            name="portada"
+                            accept="image/*"
+                            required>
+                    </div>
+                </div>
+
+                <!-- Galería 1: orden 2, se guarda en img/detalle -->
+                <div class="col-md-4">
+                    <div class="foto-campo h-100">
+                        <span class="foto-campo__numero">2</span>
+                        <label
+                            for="galeria_1"
+                            class="form-label fw-bold">
+                            Galería 1
+                        </label>
+                        <p class="small text-secondary mb-2">Un <em>detalle</em> de la figura.</p>
+                        <input
+                            type="file"
+                            class="form-control form-control-sm"
+                            id="galeria_1"
+                            name="galeria_1"
+                            accept="image/*">
+                    </div>
+                </div>
+
+                <!-- Galería 2: orden 3, se guarda en img/detalle -->
+                <div class="col-md-4">
+                    <div class="foto-campo h-100">
+                        <span class="foto-campo__numero">3</span>
+                        <label
+                            for="galeria_2"
+                            class="form-label fw-bold">
+                            Galería 2
+                        </label>
+                        <p class="small text-secondary mb-2">Otra <em>vista</em> de la figura.</p>
+                        <input
+                            type="file"
+                            class="form-control form-control-sm"
+                            id="galeria_2"
+                            name="galeria_2"
+                            accept="image/*">
+                    </div>
+                </div>
+
+            </div>
         </fieldset>
 
         <!-- ===== BOTONES ===== -->

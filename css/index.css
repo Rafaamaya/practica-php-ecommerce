@@ -1,3 +1,7 @@
+/* ============================================
+   GENERALES
+   ============================================ */
+
 .badge {
     font-size: 0.65rem;
 }
@@ -39,7 +43,7 @@
 }
 
 /* ============================================
-   CAROUSEL
+   HOME: CAROUSEL
    ============================================ */
 
 .carousel-caption {
@@ -52,8 +56,9 @@
     object-position: top;
     border-radius: 0.375rem;
 }
+
 /* ============================================
-   PASTILLA CON HOVER:
+   CATÁLOGO: PASTILLA CON HOVER
    ============================================ */
 
 /* La pastilla es el "marco". position: relative para que la capa de datos se ubique respecto a ella. */
@@ -102,7 +107,7 @@
 }
 
 /* ============================================
-   LIST GROUP
+   LISTAS (inicio, contacto y detalle)
    ============================================ */
 
 /* Le sacamos el borde gris default y separamos los ítems con una línea
@@ -118,7 +123,7 @@
 }
 
 /* ============================================
-   SECCIÓN LIBRE
+   PROCESO: SECCIÓN LIBRE
    ============================================ */
 
 /* Limitamos el ancho de la imagen para que no domine el bloque flex en pantallas grandes */
@@ -127,7 +132,7 @@
 }
 
 /* ============================================
-   PÁGINA 404
+   PÁGINAS DE ERROR (404, 403 Y 503)
    ============================================ */
 
 .pagina-404 {
@@ -161,7 +166,7 @@
 }
 
 /* ============================================
-   ADMIN: inventario de productos
+   ADMIN: ENCABEZADO DE LAS VISTAS (lo usan todas las páginas del panel)
    ============================================ */
 
 /* Encabezado oscuro con los colores de la tienda y un brillo dorado en la esquina */
@@ -195,6 +200,10 @@
     background-color: #ffffff;
     color: #241a1d;
 }
+
+/* ============================================
+   ADMIN: TABLA DEL INVENTARIO (productos y etiquetas)
+   ============================================ */
 
 /* La tabla separa sus filas: así cada fila se puede dibujar como una tarjeta */
 .inventario__tabla {
@@ -359,7 +368,24 @@
 }
 
 /* ============================================
-   ADMIN: formulario de producto
+   ADMIN: ETIQUETAS
+   ============================================ */
+
+/* La vista previa se muestra un poco más grande que en el catálogo para que se lea bien */
+.etiqueta-admin__preview {
+    font-size: 0.85rem;
+    padding: 0.45em 1em;
+}
+
+/* Cuadradito con el color de Bootstrap que usa la etiqueta */
+.etiqueta-admin__muestra {
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.35rem;
+}
+
+/* ============================================
+   ADMIN: FORMULARIOS (alta y edición)
    ============================================ */
 
 /* Título de cada sección del formulario: ícono dorado + texto en mayúsculas */
@@ -389,23 +415,6 @@
     border-color: #b4882f;
 }
 
-/* ============================================
-   ADMIN: etiquetas
-   ============================================ */
-
-/* La vista previa se muestra un poco más grande que en el catálogo para que se lea bien */
-.etiqueta-admin__preview {
-    font-size: 0.85rem;
-    padding: 0.45em 1em;
-}
-
-/* Cuadradito con el color de Bootstrap que usa la etiqueta */
-.etiqueta-admin__muestra {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 0.35rem;
-}
-
 /* Cada opción de color es una tarjetita clickeable (el radio real queda oculto con .btn-check) */
 .color-opcion {
     display: flex;
@@ -431,4 +440,35 @@
 /* Foco con teclado: mismo anillo dorado que los campos del formulario */
 .btn-check:focus-visible + .color-opcion {
     box-shadow: 0 0 0 0.2rem rgba(180, 136, 47, 0.25);
+}
+
+/* Cada campo de foto del formulario de producto: tarjetita con su número de orden */
+.foto-campo {
+    position: relative;
+    padding: 1rem;
+    border: 2px dashed #dee2e6;
+    border-radius: 0.75rem;
+}
+
+/* La portada es la foto principal: borde dorado lleno en lugar de punteado */
+.foto-campo--portada {
+    border: 2px solid #b4882f;
+    background-color: rgba(180, 136, 47, 0.06);
+}
+
+/* Número de orden (1, 2, 3) en un círculo arriba a la derecha */
+.foto-campo__numero {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background-color: #241a1d;
+    color: #b4882f;
+    font-size: 0.85rem;
+    font-weight: 700;
 }
